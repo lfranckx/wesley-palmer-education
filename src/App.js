@@ -159,6 +159,7 @@ function App() {
             <a
               href="https://www.instagram.com/wesdoeshair"
               target="_blank"
+              rel="noreferrer"
               className="footerLink"
               onClick={(e) => e.preventDefault()}
             >
@@ -170,6 +171,7 @@ function App() {
             <a
               href="https://www.youtube.com/user/WesDoesHair"
               target="_blank"
+              rel="noreferrer"
               className="footerLink"
               onClick={(e) => e.preventDefault()}
             >
