@@ -15,12 +15,24 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
 .page {
   min-height: 100svh;
   background: #ffffff;
   color: var(--text);
 }
 
+/* TOPBAR */
 .topbar {
   position: sticky;
   top: 0;
@@ -63,15 +75,22 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 8px 12px;
   border-radius: 999px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .topbar__link:hover {
   border-color: rgba(255, 255, 255, 0.38);
 }
 
+/* HERO */
 .hero {
   width: 100%;
   background: #f5f5f2;
+}
+
+.hero__media {
+  position: relative;
+  width: 100%;
 }
 
 .hero picture {
@@ -85,13 +104,74 @@ html {
   height: auto;
 }
 
+.hero__logoDesktop {
+  width: 400px;
+  margin-bottom: 20px;
+  opacity: 0.92;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+
+.hero__copy {
+  position: absolute;
+  left: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 650px;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.hero__copy h1 {
+  margin: 0 0 14px;
+  font-size: clamp(36px, 4vw, 64px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
+
+.hero__copy p {
+  margin: 0 0 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #111111;
+  text-decoration: none;
+  font-weight: 800;
+  transition: opacity 0.2s ease;
+}
+
+.hero__cta:hover {
+  opacity: 0.92;
+}
+
+.hero__subcta {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.hero__mobileLogo {
+  display: none;
+}
+
+/* MAIN */
 .main {
   padding: 48px 18px 56px;
 }
 
+/* SIGNUP */
 .signup {
   max-width: 920px;
-  margin: 0 auto;
+  margin: 0 auto 56px;
   padding: 32px 24px 36px;
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -99,17 +179,33 @@ html {
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
 }
 
-.signup__header h1 {
-  margin: 0 0 10px;
-  font-size: clamp(30px, 3vw, 42px);
-  line-height: 1.08;
+.signup__header {
+  max-width: 760px;
 }
 
-.signup__header p {
-  margin: 0;
+.signup__header h2,
+.contentBlock h2,
+.finalCta__inner h2 {
+  margin: 0 0 12px;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.signup__header p,
+.contentBlock p {
+  margin: 0 0 14px;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.signup__bullets {
+  display: grid;
+  gap: 8px;
+  margin: 22px 0 24px;
+  color: var(--text);
+  font-weight: 600;
 }
 
 .form {
@@ -142,6 +238,7 @@ textarea {
   font-size: 15px;
   outline: none;
   background: #fff;
+  color: var(--text);
 }
 
 input:focus,
@@ -161,13 +258,14 @@ textarea {
   margin: 10px 0 14px;
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .checkbox input {
   margin-top: 3px;
   width: 16px;
   height: 16px;
+  flex: 0 0 auto;
 }
 
 .button {
@@ -181,6 +279,11 @@ textarea {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  opacity: 0.96;
 }
 
 .button:disabled {
@@ -206,6 +309,69 @@ textarea {
   font-size: 13px;
 }
 
+/* CONTENT SECTIONS */
+.positioning,
+.tiers,
+.momentum,
+.finalCta {
+  padding: 0 18px 56px;
+}
+
+.contentBlock {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.featureList,
+.tierCard ul {
+  margin: 18px 0 0;
+  padding-left: 20px;
+  color: var(--text);
+}
+
+.featureList li,
+.tierCard li {
+  margin-bottom: 10px;
+  line-height: 1.55;
+}
+
+.tierGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.tierCard {
+  padding: 24px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.06);
+}
+
+.tierCard h3 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.finalCta__inner {
+  text-align: center;
+  max-width: 760px;
+}
+
+.button--link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 220px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+/* FOOTER */
 .footer {
   padding: 22px 18px 34px;
   border-top: 1px solid var(--border);
@@ -223,10 +389,29 @@ textarea {
   font-size: 14px;
 }
 
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__logo {
+  height: 28px;
+  width: auto;
+  display: block;
+  filter: invert(1);
+}
+
+.footer__copyright,
+.footer__tagline {
+  color: var(--muted);
+}
+
 .footer__right {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .footerLink {
@@ -247,6 +432,30 @@ textarea {
   scroll-margin-top: 90px;
 }
 
+/* TABLET */
+@media (max-width: 1024px) {
+  .hero__copy {
+    max-width: 380px;
+    left: 6%;
+  }
+
+  .hero__copy h1 {
+    font-size: clamp(32px, 4vw, 52px);
+  }
+
+  .tierGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1020px) {
+  .hero__logoDesktop {
+    width: 250px;
+  }
+}
+
+
+/* MOBILE */
 @media (max-width: 768px) {
   .topbar__inner {
     padding: 12px 14px;
@@ -261,12 +470,33 @@ textarea {
     font-size: 14px;
   }
 
+  .hero__copy {
+    display: none;
+  }
+
+  .hero__logoDesktop {
+    display: none;
+  }
+
+  .hero__mobileLogo {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translateX(-50%);
+    width: min(54vw, 320px);
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+  }
+
   .main {
-    padding: 28px 14px 40px;
+    padding: 32px 14px 40px;
   }
 
   .signup {
-    padding: 24px 16px 28px;
+    margin-bottom: 40px;
+    padding: 28px 18px 28px;
     border-radius: 14px;
   }
 
@@ -274,7 +504,37 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .signup__header h1 {
-    font-size: 32px;
+  .signup__header h2,
+  .contentBlock h2,
+  .finalCta__inner h2 {
+    font-size: 28px;
+    line-height: 1.08;
+  }
+
+  .signup__header p,
+  .contentBlock p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .checkbox {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .positioning,
+  .tiers,
+  .momentum,
+  .finalCta {
+    padding: 0 14px 40px;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__right {
+    gap: 8px;
   }
 }
