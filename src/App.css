@@ -32,6 +32,11 @@ img {
   color: var(--text);
 }
 
+.mc-hidden {
+  position: absolute;
+  left: -5000px;
+}
+
 /* TOPBAR */
 .topbar {
   position: sticky;
@@ -396,10 +401,12 @@ textarea {
 }
 
 .footer__logo {
-  height: 28px;
-  width: auto;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
   display: block;
-  filter: invert(1);
+  object-fit: contain;
+  filter: none;
 }
 
 .footer__copyright,

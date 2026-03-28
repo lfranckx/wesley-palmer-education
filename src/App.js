@@ -1,34 +1,17 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import "./App.css";
 
 import heroDesktop from "./assets/hero-design-desktop.jpg";
 import heroMobile from "./assets/mobile-banner-hero.jpg";
 import logoWhite from "./assets/WPE_Logo_White_cropped_2.png";
+import logoBlack from "./assets/WPE_Logo_Black_Cropped.png"
 
 function App() {
   const year = useMemo(() => new Date().getFullYear(), []);
-  const [status, setStatus] = useState({ state: "idle", message: "" });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus({ state: "loading", message: "" });
-
-    const formData = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
-
-    console.log("Coming Soon Form Payload:", payload);
-
-    window.setTimeout(() => {
-      setStatus({
-        state: "success",
-        message: "You’re on the list. Appreciate you — we’ll be in touch soon.",
-      });
-      e.currentTarget.reset();
-    }, 650);
-  };
 
   return (
     <div className="page">
+      {/* TOP NAV */}
       <div className="topbar">
         <div className="topbar__inner">
           <a className="topbar__brand" href="#top" aria-label="Wesley Palmer Home">
@@ -47,6 +30,7 @@ function App() {
         </div>
       </div>
 
+      {/* HERO */}
       <header className="hero" id="top" aria-label="Wesley Palmer Education Coming Soon">
         <div className="hero__media">
           <picture>
@@ -64,10 +48,12 @@ function App() {
               alt="Wesley Palmer Education"
               className="hero__logoDesktop"
             />
+
             <h1>The Next Chapter of Hair Education Is Coming.</h1>
+
             <p>
-              Built for stylists who want more than inspiration — real technique,
-              real growth, real results.
+              Built for stylists who want more than inspiration — real
+              technique, real growth, real results.
             </p>
 
             <a className="hero__cta" href="#signup">
@@ -87,7 +73,9 @@ function App() {
         </div>
       </header>
 
+      {/* MAIN */}
       <main className="main">
+        {/* SIGNUP */}
         <section className="signup" id="signup" aria-label="Waitlist signup">
           <div className="signup__header">
             <h2>Get Early Access</h2>
@@ -103,22 +91,27 @@ function App() {
             <div>Be first to experience the platform</div>
           </div>
 
-          <form className="form" onSubmit={handleSubmit}>
+          <form
+            className="form"
+            action="https://gmail.us18.list-manage.com/subscribe/post?u=c5455b70b137f72bc367bafdc&id=e503664f76&f_id=0028afe6f0"
+            method="POST"
+            target="_blank"
+            noValidate
+          >
             <label className="field">
               <span className="label">First name</span>
               <input
-                name="firstName"
+                name="FNAME"
                 type="text"
                 autoComplete="given-name"
                 placeholder="First name"
-                required
               />
             </label>
 
             <label className="field">
               <span className="label">Email</span>
               <input
-                name="email"
+                name="EMAIL"
                 type="email"
                 autoComplete="email"
                 placeholder="you@domain.com"
@@ -126,26 +119,34 @@ function App() {
               />
             </label>
 
-            <button
-              className="button"
-              type="submit"
-              disabled={status.state === "loading"}
-            >
-              {status.state === "loading" ? "Sending..." : "Reserve Your Spot"}
+            <div className="mc-hidden" aria-hidden="true">
+              <input
+                type="text"
+                name="b_c5455b70b137f72bc367bafdc_e503664f76"
+                tabIndex="-1"
+                defaultValue=""
+              />
+            </div>
+
+            <label className="checkbox">
+              <input name="consent" type="checkbox" required />
+              <span>
+                I agree to receive updates from Wesley Palmer. Unsubscribe
+                anytime.
+              </span>
+            </label>
+
+            <button className="button" type="submit">
+              Reserve Your Spot
             </button>
 
-            {status.state === "success" && (
-              <div className="notice success" role="status">
-                {status.message}
-              </div>
-            )}
-
             <div className="microcopy">
-              No spam. Just updates when we go live.
+              No spam. Just updates when we go live. After submitting, please confirm your email if prompted.
             </div>
           </form>
         </section>
 
+        {/* WHY THIS EXISTS */}
         <section className="positioning">
           <div className="contentBlock">
             <h2>Why This Exists</h2>
@@ -158,9 +159,7 @@ function App() {
 
             <ul className="featureList">
               <li>Real techniques you can use immediately</li>
-              <li>
-                Business + social strategies that actually grow your income
-              </li>
+              <li>Business + social strategies that actually grow your income</li>
               <li>
                 Education designed for working stylists — not just inspiration
               </li>
@@ -168,7 +167,8 @@ function App() {
           </div>
         </section>
 
-        <section className="tiers">
+        {/* ACCESS TIERS */}
+        {/* <section className="tiers">
           <div className="contentBlock">
             <h2>What You’ll Get Access To</h2>
 
@@ -201,8 +201,9 @@ function App() {
               </article>
             </div>
           </div>
-        </section>
+        </section> */}
 
+        {/* SOCIAL PROOF / MOMENTUM */}
         <section className="momentum">
           <div className="contentBlock">
             <h2>Built in Real Time</h2>
@@ -215,6 +216,7 @@ function App() {
           </div>
         </section>
 
+        {/* FINAL CTA */}
         <section className="finalCta">
           <div className="contentBlock finalCta__inner">
             <h2>Don’t Miss This Launch</h2>
@@ -229,12 +231,13 @@ function App() {
         </section>
       </main>
 
+      {/* FOOTER */}
       <footer className="footer">
         <div className="footer__inner">
           <div className="footer__left">
             <img
               className="footer__logo"
-              src={logoWhite}
+              src={logoBlack}
               alt="Wesley Palmer Education"
             />
             <div className="footer__copyright">© {year} Wesley Palmer</div>
