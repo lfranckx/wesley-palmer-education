@@ -538,7 +538,7 @@ textarea {
 
   .footer__inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .footer__right {
