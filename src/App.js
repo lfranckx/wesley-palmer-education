@@ -3,8 +3,8 @@ import "./App.css";
 
 import heroDesktop from "./assets/hero-design-desktop.jpg";
 import heroMobile from "./assets/mobile-banner-hero.jpg";
-import logoWhite from "./assets/WPE_Logo_White_cropped_2.png";
-import logoBlack from "./assets/WPE_Logo_Black_Cropped.png"
+import logoWhite from "./assets/WPE_Logo_White_2.png";
+import logoBlack from "./assets/WPE_Logo_Black_2.png"
 
 function App() {
   const year = useMemo(() => new Date().getFullYear(), []);
